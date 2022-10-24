@@ -1,0 +1,144 @@
+
+<style>
+
+
+.badge:after{
+content:attr(value);
+font-size:14px;
+background: red;
+border-radius:50%;
+padding:3px;
+position:relative;
+left:-8px;
+top:-10px;
+opacity:0.9;
+
+    margin-right: 15px;
+}
+.fa {
+  margin-top: 6px;
+}
+
+/* .badge1{
+content:attr(value);
+font-size:12px;
+background: red;
+border-radius:50%;
+padding:3px;
+position:relative;
+left:-8px;
+top:-10px;
+opacity:0.9;
+    margin-top : 10px;
+    margin-right: 15px;
+} */
+
+@media(max-width:1100px)
+  {
+    .badge{
+        margin-left : -15px;
+    } 
+  }
+
+
+
+</style>
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #241F1F;">
+  <div class="container-fluid">
+      <div class="logo-user">
+          <a class="navbar-brand text-white" href="/user_home">Coza Store</a>
+      </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <div   >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <a class="nav-link" href="/user_home">HOME</a>
+           </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href='/user-category?women=true'>Women</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href='/user-category?men=true'>Men</a> -->
+          </li> 
+           <li class="nav-item" style="display:flex;">
+            <% for(let i=0;i<category.length;i++){ %> 
+            <a class="nav-link" href='/user-category?id=<%= category[i]._id %> '><%= category[i].category  %> </a>
+            <% } %> 
+        </li> 
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Accessories</a>
+          </li>  -->
+          </ul>   
+      </div>
+
+      <div class="navbar-nav  mb-lg-0" style=" width: 100%; display: flex; justify-content: end;">
+
+          <div class="container">
+
+          <div class="row height d-flex">
+
+            <div class="col-md-6">
+
+              <div class="form" style="min-width: 5vw;">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" placeholder="Search...">
+              </div>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <!-- <span class='badge badge-warning' id='lblCartCount'> <%=// cart.items.length  %>  </span> -->
+        
+          <a class="nav-icon-link my-auto" href="/wishlist"><i class="fa-regular fa-heart"></i></a>
+          <!-- <a class="nav-icon-link my-auto"  href="/cart"><i class="fa-solid fa-cart-shopping"></i></a> -->
+          <% if(cart.items.length>0){ %> 
+            <a href="/cart"><i class="fa badge" style="font-size:18px;" value="<%= cart.items.length  %> " >&#xf07a;</i></a>
+          <% } else{ %> 
+            <a class="nav-icon-link my-auto" href="/cart"><i class="fa badge1 " style="font-size:18px;" >&#xf07a;</i></a>
+          <% } %> 
+          
+          <a class="nav-icon-link my-auto" href="/myAccount"><i class="fa-solid fa-user-large"></i></a> 
+          <a class="nav-icon-link my-auto" style="cursor: pointer"><i class="fa-solid fa-right-from-bracket" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+        </div>
+
+  </div>
+  
+</div>
+
+</nav>
+  
+      
+      
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Logout</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              Are you sure you want to Logout?
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="/user_logout"><button type="button" class="btn btn-danger">Logout</button></a>
+              </div>
+          </div>
+          </div>
+      </div>

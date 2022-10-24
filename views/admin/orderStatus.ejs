@@ -1,0 +1,151 @@
+<%- include('../layout/header.ejs') %> 
+<%- include('../partials/admin-navbar.ejs') %> 
+
+<section>
+    <div class="container">
+
+      <div class="container">
+        <div class="btn-group pt-5 contact">
+          <a class="btn btn-primary dropdown-toggle mb-2" data-bs-toggle="dropdown" aria-expanded="false" >
+              Download
+          </a>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/admin/exportExcel">Excel</a></li>
+              <li><button class="dropdown-item" onclick="myfun('pt')">Pdf</button></li>
+        
+          </ul>
+        </div>
+        </div>
+
+    <div class="table-responsive">
+      <div class="table-wrap" id="pt">
+    <!-- <table class="table" > -->
+     
+          <!-- <div class="row mt-4">
+              <a href="" class="btn btn-success">Add Product</a>
+          </div> -->
+  
+            <table id="myTable" class="table mt-5">
+            <!-- <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th scope="col">Order Status</th>
+        <th scope="col">Accept</th>
+        <!-- <th scope="col">Cancel</th> -->
+        <!-- <th>Image</th> -->
+        <!-- <th>       Edit/Delete</th> -->
+        
+      </tr>
+    </thead>
+    <tbody>
+      <!-- {{#each products}} -->
+      <% for(let i=0;i<result.items.length;i++) { %> 
+      <tr>
+        <th scope="row"><%= i+1  %> </th>
+        
+  
+        <td><%= result.items[i]._id %> </td>
+        <td><%= result.items[i].productName %></td>
+        <td><%= result.items[i].quantity %></td>
+        <td><%= result.items[i].price %></td>
+        <td><img src="/images/<%= result.items[i].image1 %> " style="height:75px;" alt=""></td>
+        <td><%= result.items[i].orderStatus %></td>
+        <!-- <td><img style="width:50px;height:50px" src="" alt=""></td> -->
+
+        <% if(result.items[i].orderStatus==="processed"){ %> 
+        <td>
+            <div class="d-flex">
+                <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>&approve=true" method="post">
+                    <button  class= "btn btn-success mx-2">Approve</button>
+                </form>
+                <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>&deny=true" method="post">
+                    <button class="btn btn-danger">Deny</button>
+                </form>
+            </div>
+        </td>
+        <% } else if(result.items[i].orderStatus==="Approved") {%>
+            <td>
+            <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>&shipped=true" method="post">
+                <button class="btn btn-warning">Shipped</button>
+            </form> 
+        </td>
+            <% } else if(result.items[i].orderStatus==="Cancelled") {%>
+                <td>
+                    <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>" method="post">
+                        <button class="btn btn-warning disabled">Cancelled</button>
+                    </form>
+                </td>
+                <% } else if(result.items[i].orderStatus==="Shipped") {%>
+                    <td>
+                        <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>&delivered=true" method="post">
+                            <button class="btn btn-primary ">Delivered</button>
+                        </form>
+                    </td>
+                <%} else  {%>
+                    <td>
+                        <form action="/admin/edit-status?id=<%= result._id %>&itemId=<%= result.items[i].itemId %>&delivered=true" method="post">
+                            <button class="btn btn-info disabled">delivered</button>
+                        </form>
+                    </td>
+                <% } %> 
+                
+            
+      </tr>
+      <% } %> 
+      <!-- {{/each}} -->
+       
+    </tbody>
+  </table>
+     </div> 
+    <!-- </table> -->
+  </div>
+  </div>
+  </section>
+  
+  <script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+
+<script>
+  console.log("script working")
+  function myfun(pt) {
+      var bk = document.body.innerHTML;
+      var dv = document.getElementById('pt').innerHTML;
+      document.body.innerHTML = dv;
+      document.body.style.padding = "20px"
+      window.print();
+      location.reload();
+  }
+  $(document).ready(function () {
+      $('#myTable').DataTable()
+  });
+</script>
+
+
+<%- include('../layout/footer.ejs') %> 

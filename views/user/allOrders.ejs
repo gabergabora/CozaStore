@@ -1,0 +1,100 @@
+<%- include('../layout/header.ejs') %> 
+<%- include('../partials/user-navbar-loggedin.ejs') %> 
+
+<section>
+    <div class="container" style="margin-top:50px;">
+    <div class="table-responsive">
+    <table class="table">
+     
+          <!-- <div class="row mt-4">
+              <a href="" class="btn btn-success">Add Product</a>
+          </div> -->
+  
+            <table id="myTable" class="table mt-5">
+            <!-- <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+    <thead>
+      <tr>
+        <!-- <th scope="col">No</th> -->
+        <th scope="col">Name</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Date</th>
+        <th scope="col">Bill Amount</th>
+        <th scope="col">Mode of Payment</th>
+        <!-- <th>Image</th> -->
+        <th>       Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <!-- {{#each products}} -->
+      <% for(let i=0;i<result.length;i++) { %> 
+      <tr>
+        <!-- <th scope="row"><//%= i+1  %> </th> -->
+        
+        <td><%= result[i].address.name %> </td>
+        <td><%= result[i]._id %> </td>
+        <!-- <td><//%= result[i].owner %></td> -->
+        <td><%= result[i].orderDate.toLocaleDateString() %></td>
+        <td><%= result[i].bill %></td>
+        <td><%= result[i].paymentMode %></td>
+        <!-- <td><img style="width:50px;height:50px" src="" alt=""></td> -->
+        <td>
+          <!-- <//% if(users[i].blockStatus) { %>  -->
+            <!-- onclick="return  confirm('Are you sure want to unblock <//%= users[i].name %>')" -->
+         <a href="/user/order-status?id=<%= result[i]._id %> ">
+          <button class="btn btn-primary">View Status</button>
+          </a>
+        
+        <!-- <//% } else { %>  -->
+  
+          <!-- <form action="/admin_panel/user/block?id=<//%= users[i].id  %> " method="post">
+          <button class="btn btn-danger" onclick="return  confirm('Are you sure want to block <//%= users[i].name %>')">Block</button>
+        </form> -->
+        <!-- <//% } %>  -->
+  
+        </td>
+      </tr>
+      <% } %> 
+      <!-- {{/each}} -->
+       
+    </tbody>
+  </table>
+      
+    </table>
+  </div>
+  </div>
+  </section>
+  
+  <!-- <script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script> -->
+
+    <script>
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+    </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+<%- include('../layout/footer.ejs') %> 

@@ -1,0 +1,145 @@
+<%- include('../layout/header.ejs') %> 
+
+<%- include('../partials/user-navbar-loggedin.ejs') %> 
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <% if(women) { %>
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Ladies Fashion Season</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">New Collections 2022</p>
+                </div>
+                <% } else if(men) { %> 
+                    <div class="text-center text-white">
+                        <h1 class="display-4 fw-bolder">Mens Fashion Season</h1>
+                        <p class="lead fw-normal text-white-50 mb-0">New Collections 2022</p>
+                    </div>
+                <% } %> 
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
+                    <% if(women) { %> 
+                <% for(let i=0; i<women.length; i++) { %> 
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                           <!-- <//% if(wishlist === false) {%>   -->
+                            <form action="/user-home/addToWishlist?id=<%= women[i]._id%>" method="post">
+                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                    <button type="submit"><i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <!-- <//% } else { %>  -->
+                                <!-- <form action="/user-home/addToWishlist?id=<//%= result[i]._id%>&wishlist=true" method="post">
+                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                        <button type="submit"><i class="fa-regular fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </form> -->
+                                <!-- <//% } %>  -->
+                            <!-- Product image-->
+                            <img class="card-img-top" src="/images/<%= women[i].image1 %> " alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                   <a href="/product-view?id=<%= women[i]._id  %> " style="text-decoration:none"> <h5 class="fw-bolder"><%= women[i].productName %> </h5></a>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span style=" margin-right: 10px; font-size: 20px; font-weight: 600;">₹ <%= women[i].discountedPrice %></span>   
+                                    <span class="text-muted text-decoration-line-through" style="font-size: 16px">₹ <%= women[i].actualPrice %> </span> 
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                   
+                                        <form action="/user_home/addToCart?id=<%= women[i]._id %>&women=true" method="post">
+                                            <div class="text-center"><button type="submit" class="btn btn-outline-dark mt-auto mb-3" href="" style="width: 100%;">Add to cart</button></div>
+                                        </form>
+                                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-3" style="width: 100%;" href="/cart">Go to cart</a></div> -->
+                                <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="width: 100%;" href="#">Buy Now</a></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <% }  %> 
+
+                    <% } else if(men) { %> 
+                <% for(let i=0; i<men.length; i++) { %> 
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                           <!-- <//% if(wishlist === false) {%>   -->
+                            <form action="/user-home/addToWishlist?id=<%= men[i]._id%>" method="post">
+                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                    <button type="submit"><i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <!-- <//% } else { %>  -->
+                                <!-- <form action="/user-home/addToWishlist?id=<//%= result[i]._id%>&wishlist=true" method="post">
+                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                        <button type="submit"><i class="fa-regular fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </form> -->
+                                <!-- <//% } %>  -->
+                            <!-- Product image-->
+                            <img class="card-img-top" src="/images/<%= men[i].image1 %> " alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                   <a href="/product-view?id=<%= men[i]._id  %> " style="text-decoration:none"> <h5 class="fw-bolder"><%= men[i].productName %> </h5></a>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span style=" margin-right: 10px; font-size: 20px; font-weight: 600;">₹ <%= men[i].discountedPrice %></span>   
+                                    <span class="text-muted text-decoration-line-through" style="font-size: 16px">₹ <%= men[i].actualPrice %> </span> 
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                   
+                                        <form action="/user_home/addToCart?id=<%= men[i]._id %>&men=true" method="post">
+                                            <div class="text-center"><button type="submit" class="btn btn-outline-dark mt-auto mb-3" href="" style="width: 100%;">Add to cart</button></div>
+                                        </form>
+                                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-3" style="width: 100%;" href="/cart">Go to cart</a></div> -->
+                                <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="width: 100%;" href="#">Buy Now</a></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <% } %> 
+                    <% } %> 
+
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+<%- include('../layout/footer.ejs') %>

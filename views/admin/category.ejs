@@ -1,0 +1,132 @@
+<%- include('../layout/header.ejs') %> 
+<%- include('../partials/admin-navbar.ejs') %> 
+
+
+<section>
+    <div class="table-responsive container">
+        <div class="container">
+          <div class="input-group mt-5">
+            
+        <!-- ////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- Button trigger modal -->
+            <div style="margin-left:20px;">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Category
+              </button>
+            </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Category</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action='/admin_panel/categories' method="post" > 
+  
+                        <div class="form-group">
+                            <label for="exampleInputName1">New Category</label> 
+                            
+                            <input type="name" name="category" class="form-control" id="category" value="" required> 
+                        </div> 
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+
+
+        <!-- //////////////////////////////////////////////////////////////////// -->
+        <div style="margin-left:20px;margin-top:10px;">
+          <% if(validation.category) {%> 
+            <p style="color:red">!!!!Category Exists!!!!</p>
+          <% } %>
+       </div>
+            <div style="position: absolute; right: 0px; width: 300px;">
+              <input style="align-items: flex-end" type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search..."/>
+            </div>
+          </div>
+            
+          <div class="table-responsive">
+            <table id="myTable" class="table table-hover mt-5">
+                <thead>
+                  <tr>
+                    <th scope="col">Slno</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+            
+                </thead>
+          
+                
+                <% for(let i=0;i<result.length;i++) {%> 
+                <tbody>
+                <tr>
+                      <th scope="row"> <%= i+1  %> </th>
+                      <td><%= result[i].category  %>  </td>
+                      <td> 
+                        <form action="/admin_panel/delete-categories?cat=<%= result[i].category %>" method="post">
+                            <button class="btn btn-danger"  type="submit">Delete</button>
+                          </form>
+                      </td>
+                      <td> </td>
+                        <!-- <a href="">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href=" ">
+                          <i class="fa-solid fa-trash"></i>
+                        </a> -->
+                      </td>
+                    </tr>
+                </tbody>
+                <% } %> 
+            </table>
+          </table>
+        </div>
+    
+      </div>
+    </table>
+  </div>
+</section>
+
+
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+  <!-- <script>
+    function myFunction() {
+      let input = document.getElementById("myInput");
+      let filter = input.value.toUpperCase();
+      let table = document.getElementById("myTable");
+      let tr = table.getElementsByTagName("tr");
+      for (let i = 0; i < tr.length; i++) {
+          let td = tr[i].getElementsByTagName("td")[0]  ;
+        if (td) {
+          let txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+
+
+    </script> -->
+
+<%- include('../layout/footer.ejs') %> 
