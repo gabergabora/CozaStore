@@ -75,6 +75,11 @@ exports.isMobileFound = (req,res,next)=>{
 
 
 
+exports.usersignIn = (req,res) =>{
+    res.redirect('/user_login')
+}
+
+
 exports.userLogin = (req,res)=>{
     let response =({
         passErr : req.query.pass,

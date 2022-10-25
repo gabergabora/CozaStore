@@ -9,6 +9,7 @@ const router = express.Router();
 router.get('/user_signup', services.userSignup)
 router.post('/user_signup',services.signUp)
 
+router.get('/',services.isLoggedOut, services.usersignIn)
 router.get('/user_login',services.isLoggedOut, services.userLogin)
 router.post('/user_login',services.login)
 
