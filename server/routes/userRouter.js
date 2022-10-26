@@ -28,7 +28,7 @@ router.get('/myAccount',services.isLoggedIn,services.myAccount)
 router.get('/product-view', services.productView);
 
 
-router.post('/user_home/addToCart', services.addToCart);
+router.post('/user_home/addToCart',services.isLoggedIn, services.addToCart);
 
 router.get('/cart/checkout',services.isLoggedIn, services.checkout);
 router.get('/cart/checkout/shipping/add-new-address',services.isLoggedIn, services.addAddress);

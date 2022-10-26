@@ -76,7 +76,7 @@ exports.isMobileFound = (req,res,next)=>{
 
 
 exports.usersignIn = (req,res) =>{
-    res.redirect('/user_login')
+    res.redirect('/user_home')
 }
 
 
