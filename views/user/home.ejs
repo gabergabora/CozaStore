@@ -1,16 +1,40 @@
 <%- include('../layout/header.ejs') %> 
 
 <%- include('../partials/user-navbar-loggedin.ejs') %> 
+<link rel="stylesheet" href="/stylesheet/banner.css">
+
+
+<style>
+    .fa-heart  :hover{
+  color: red !important;
+}
+</style>
+
+
 
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <!-- <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Summer Fashion Season</h1>
                     <p class="lead fw-normal text-white-50 mb-0">New Collections 2022</p>
                 </div>
             </div>
+        </header> -->
+        <header class="bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/product-01.jpg'); background-size: cover"  ;>
+            <div class="container banner px-4 px-lg-5" >
+                <div class="text-center text-white" style="text-align: center">
+                    <h1 class="display-4 fw-bolder" style="font-size: 5vw">SUMMER FASHION</h1>
+                    <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
+                </div>
+            </div>
         </header>
+
+
+
+
+
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -23,12 +47,21 @@
                             <!-- Sale badge-->
                            <!-- <//% if(wishlist === false) {%>   -->
                             
-                                <div class=" bg-transparent text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
-                                    <form action="/user-home/addToWishlist?id=<%= result[i]._id%>" method="post">
+                                <!-- <div class=" bg-transparent text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                    <form action="/user-home/addToWishlist?id=<%=// result[i]._id%>" method="post">
                                     <button type="submit" style="background:none;border:none; margin-right:-9px;"><i class="fa-regular fa-heart" ></i>
                                     </button>
                                 </form>
+                                </div> -->
+
+                                <div class="text-secondary  position-absolute" id="pulse"
+                                style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                <form action="/user-home/addToWishlist?id=<%= result[i]._id%>" method="post">
+                                <button type=submit style="background:none;border:none; margin-right:-9px; color:grey;"><i class="fa fa-heart fa-xl"></i></button>
+                                </form>
                                 </div>
+                                    
+
                             
                             <!-- <//% } else { %>  -->
                                 <!-- <form action="/user-home/addToWishlist?id=<//%= result[i]._id%>&wishlist=true" method="post">

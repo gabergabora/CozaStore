@@ -50,10 +50,10 @@ opacity:0.9;
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background: #241F1F;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #241F1F;padding: 21px;">
   <div class="container-fluid">
-      <div class="logo-user">
-          <a class="navbar-brand text-white" href="/user_home">Coza Store</a>
+      <div class="logo-user" >
+          <a class="navbar-brand text-white" href="/user_home" style="font-size: x-large;" >Coza Store</a>
       </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -61,8 +61,8 @@ opacity:0.9;
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-      <div   >
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
           <li class="nav-item">
               <a class="nav-link" href="/user_home">HOME</a>
            </li>
@@ -72,7 +72,7 @@ opacity:0.9;
           <li class="nav-item">
               <a class="nav-link" href='/user-category?men=true'>Men</a> -->
           </li> 
-           <li class="nav-item" style="display:flex;">
+           <li class="nav-item" style="display:flex;" >
             <% for(let i=0;i<category.length;i++){ %> 
             <a class="nav-link" href='/user-category?id=<%= category[i]._id %> '><%= category[i].category  %> </a>
             <% } %> 
@@ -91,10 +91,10 @@ opacity:0.9;
 
             <div class="col-md-6">
 
-              <div class="form" style="min-width: 5vw;">
+              <!-- <div class="form" style="min-width: 5vw;">
                 <i class="fa fa-search"></i>
                 <input type="text" class="form-control form-input" placeholder="Search...">
-              </div>
+              </div> -->
               
             </div>
             
@@ -102,7 +102,7 @@ opacity:0.9;
           
         </div>
         <!-- <span class='badge badge-warning' id='lblCartCount'> <%=// cart.items.length  %>  </span> -->
-        
+        <div class="icons d-flex">
           <a class="nav-icon-link my-auto" href="/wishlist"><i class="fa-regular fa-heart"></i></a>
           <!-- <a class="nav-icon-link my-auto"  href="/cart"><i class="fa-solid fa-cart-shopping"></i></a> -->
           <% if(cart.items.length>0){ %> 
@@ -113,7 +113,9 @@ opacity:0.9;
           
           <a class="nav-icon-link my-auto" href="/myAccount"><i class="fa-solid fa-user-large"></i></a> 
           <a class="nav-icon-link my-auto" style="cursor: pointer"><i class="fa-solid fa-right-from-bracket" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></a>
+          </div>
         </div>
+
 
   </div>
   

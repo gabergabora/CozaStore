@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+
+/* Responsive img */
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive background */
+
+
+.responsive-bg-w-text {
+  display: flex;
+  background: url('https://images.unsplash.com/photo-1548747176-e60140fba78d?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ');
+  background-size:cover;
+  /* height:  100px; */
+  padding-bottom: 66%; /* = image.height / image.width * 100% */
+  
+  align-items: center;
+  justify-content: center;
+}
+
+.responsive-bg-w-text>.header {
+  display: inline;
+
+  margin-top: 66.66%; /* the same as side ratio above */
+  
+  font-size: calc(1em + 4vw);
+  font-family: 'Abril Fatface', cursive;
+  text-shadow: 0 0 .5em #F9A825;
+}

@@ -16,9 +16,9 @@
   color: red !important;
  
 }
-.fa-heart  :hover{
-  color: red;
-}
+/* .fa-heart  :hover{
+  color: red !important;
+} */
 /* ////////////////////////// */
 
 /* .card1-body {
@@ -108,9 +108,14 @@
   }
 .navbar-brand {
   color: #fff ;
+  text-size-adjust: 10px;
 }
   
+/* /////////////Banner/////////////////// */
 
+.banner{
+  padding : 9%;
+}
 
 .form{
 
@@ -316,6 +321,14 @@ p{
   .breadcrumb-item+.breadcrumb-item {
       padding-left: 0
   }
+  .otp-field {
+    width : 10pxpx
+  }
+
+  .banner {
+    padding: 2%;
+  }
+
 }
 
 .wishlist-inactive {
@@ -341,6 +354,8 @@ p{
 .wishlist-inactive:active {
   font-size: 2em;
 }
+
+
 
 
 
