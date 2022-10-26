@@ -2,6 +2,23 @@
 
 <%- include('../partials/user-navbar-loggedin.ejs') %> 
 
+
+    <style>
+        .mainBanner{
+            padding-right: 36rem;
+                }
+
+
+
+         @media (max-width: 767px) {
+                .mainBanner {
+                    padding-right: 10rem;
+                }
+            }
+
+    </style>
+
+
         <!-- Header-->
         <!-- <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -20,18 +37,19 @@
         </header> -->
 
         <% if(cat[0].category==="Women") { %>
-            <header class="mainBanner bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/blog-06.jpg'); background-size: cover"  ;>
+            <header class="mainBanner bg-dark py-5" style="height: 37vw;  margin: auto; background-image: url('../../images1/slide-01.jpg'); background-size: cover;" >
                 <div class="container banner px-4 px-lg-5" >
-                    <div class="text-center text-white" style="text-align: center">
+                    <!-- /////text-dark : dark aakum and text-white : white aakum /////// -->
+                    <div class="text-center text-dark" style="text-align: center; "> 
                         <h1 class="display-4 fw-bolder" style="font-size: 5vw">WOMEN FASHION</h1>
                         <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
                     </div>
                 </div>
             </header>
             <% } else if(cat[0].category==="Men") { %> 
-                <header class="mainBanner bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/pexels-andrea-piacquadio-845434\ copy.jpg '); background-size: cover"  ;>
+                <header class="mainBanner bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/slide-02.jpg'); background-size: cover;">
                     <div class="container banner px-4 px-lg-5" >
-                        <div class="text-center text-white" style="text-align: center">
+                        <div class="text-center text-dark" style="text-align: center">
                             <h1 class="display-4 fw-bolder" style="font-size: 5vw">MEN FASHION</h1>
                             <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
                         </div>
@@ -57,12 +75,21 @@
                         <div class="card h-100">
                             <!-- Sale badge-->
                            <!-- <//% if(wishlist === false) {%>   -->
-                            <div class="bg-transparent text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
-                                <form action="/user-home/addToWishlist?id=<%= cat[i]._id%>" method="post">
+                            <!-- <div class="bg-transparent text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                <form action="/user-home/addToWishlist?id=<%=// cat[i]._id%>" method="post">
                                 <button type="submit" style="background:none;border:none; margin-right:-9px;"><i class="fa-regular fa-heart" ></i>
                                 </button>
                             </form>
-                            </div>
+                            </div> -->
+                            
+                            <div class="text-secondary  position-absolute" id="pulse"
+                                style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
+                                <form action="/user-home/addToWishlist?id=<%= cat[i]._id%>&catwish<%= i %>=<%= i %> " method="post">
+                                <button type=submit style="background:none;border:none; margin-right:-9px; color:grey;"><i class="fa fa-heart fa-xl"></i></button>
+                                </form>
+                                </div>
+
+
                             <!-- <//% } else { %>  -->
                                 <!-- <form action="/user-home/addToWishlist?id=<//%= result[i]._id%>&wishlist=true" method="post">
                                     <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
@@ -109,7 +136,7 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; CozaStore 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->

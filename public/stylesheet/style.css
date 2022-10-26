@@ -16,9 +16,9 @@
   color: red !important;
  
 }
-/* .fa-heart  :hover{
+.fa :hover{
   color: red !important;
-} */
+}
 /* ////////////////////////// */
 
 /* .card1-body {
@@ -115,7 +115,13 @@
 
 .banner{
   padding : 9%;
+  /* padding-right: 32rem; */
 }
+
+/* .mainBanner{
+  padding-right: 32rem;
+} */
+
 
 .form{
 

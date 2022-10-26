@@ -1246,17 +1246,59 @@ exports.userHome = (req, res) => {
                                 if(newWishlist.items.length<1){
                                     Wishlist.deleteOne({owner : user})
                                     .then(()=>{
+
+                                        // else if(req.query.catwish){
+                                        //     res.redirect(`/user-category?id=${req.query.id}`)
+                                        // }
+
                                         if(req.query.wishlist){
                                             res.redirect('/user_home')
-                                        }else{
+                                        }
+                                        else{
                                             res.redirect('/user_home')
                                         }
+
+
+
+                                        // Category.find()
+                                        // .then((cat)=>{
+                                        //     if(req.query.wishlist){
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        //     else
+                                        //      if(req.query.catwish1){
+                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
+                                        //     }else if(req.query.catwish2){
+                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
+                                        //     }else{
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        // })
+                                        
                                         
                                     }).catch((err)=>{
                                         console.log(er)
                                     })
                                 }else{
                                     res.redirect('/user_home')
+
+                                    // Category.find()
+                                    // .then((cat)=>{
+                                    //     if(req.query.wishlist){
+                                    //         res.redirect('/user_home')
+                                    //     }
+                                    //     else 
+                                    //     if(req.query.catwish1){
+                                    //         res.redirect(`/user-category?id=${cat[0]._id}`)
+                                    //     }else if(req.query.catwish2){
+                                    //         res.redirect(`/user-category?id=${cat[1]._id}`)
+                                    //     }else{
+                                    //         res.redirect('/user_home')
+                                    //     }
+                                    // })
+
+
+
                                 }
                             }).catch((err)=>{
                                 console.log(er)
@@ -1277,6 +1319,23 @@ exports.userHome = (req, res) => {
                                     Wishlist.updateOne({owner : user},{$set:{items : newWishlist.items}})
                                     .then(()=>{
                                         res.redirect('/user_home')
+
+                                        // Category.find()
+                                        // .then((cat)=>{
+                                        //     if(req.query.wishlist){
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        //     else 
+                                        //     if(req.query.catwish1){
+                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
+                                        //     }else if(req.query.catwish2){
+                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
+                                        //     }else{
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        // })
+
+
                             }).catch((err)=>{
                                 console.log(er)
                             })
@@ -1304,7 +1363,27 @@ exports.userHome = (req, res) => {
                      }) 
                      wish.save()
                      .then(()=>{
-                         res.redirect('/user_home')
+
+                        res.redirect('/user_home')
+
+                                        // Category.find()
+                                        // .then((cat)=>{
+                                        //     if(req.query.wishlist){
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        //     else
+                                        //      if(req.query.catwish1 && cat[0].category==="Men"){
+                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
+                                        //         console.log("men")
+                                        //     }else if(req.query.catwish2 && cat[1].category==="Women"){
+                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
+                                        //         console.log("women")
+                                        //     }else{
+                                        //         res.redirect('/user_home')
+                                        //     }
+                                        // })
+
+                         
                      }).catch((err)=>{
                         console.log(er)
                     })
@@ -1315,6 +1394,12 @@ exports.userHome = (req, res) => {
                 }).catch((err)=>{
                     console.log(er)
                 })
+
+                // Category.find()
+                // .then((cat1)=>{
+                //     console.log(cat1[0]);
+                // })
+
             }  
               
 exports.deleteFromWishlist = (req,res) =>{

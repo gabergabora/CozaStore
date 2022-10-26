@@ -1,4 +1,4 @@
-    const express = require('express')
+const express = require('express')
 const services = require('../controller/render')
 const fs = require('fs')
 const upload = require('../../middleware/upload')
@@ -25,7 +25,7 @@ router.post('/delete-from-wishlist',services.isLoggedIn,services.deleteFromWishl
 router.get('/cart', services.isLoggedIn, services.cart)
 router.get('/myAccount',services.isLoggedIn,services.myAccount)
 
-router.get('/product-view',services.isLoggedIn, services.productView);
+router.get('/product-view', services.productView);
 
 
 router.post('/user_home/addToCart', services.addToCart);
@@ -53,7 +53,7 @@ router.post('/addToCart/cart-operation',services.isLoggedIn,services.cartOperati
 router.post('/delete-from-cart',services.isLoggedIn, services.deleteFromCart);
 
 
-router.get('/user_home',services.isLoggedIn, services.userHome)
+router.get('/user_home', services.userHome)
 router.get('/user-category',services.isLoggedIn, services.userCategory)
 router.get('/user_logout',services.logout)
 
