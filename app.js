@@ -12,6 +12,7 @@ const adminRouter = require('./server/routes/adminRouter')
 const app = express()
 app.use(express.static('public'))
 app.use(express.static('uploads'))
+// app.use(express.static('images1'))
 app.use(express.urlencoded({extended:false}))
 app.use(sessions({
     secret: "verygoodpassword",

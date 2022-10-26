@@ -322,12 +322,32 @@ p{
       padding-left: 0
   }
   .otp-field {
-    width : 10pxpx
+    width : 10px;
   }
 
-  .banner {
-    padding: 2%;
+  .mainBanner {
+    height: 60vw !important;
   }
+  
+  .banner {
+    padding: 15%;
+  }
+  .py-5 {
+    /* padding-top: 3rem!important;
+    padding-bottom: 3rem!important; */
+    margin-top: -58px;
+  }
+
+.h5, h5 {
+  font-size: 1.23rem;
+}
+.mb-0 {
+  font-size : 3vw !important;
+}
+.fw-bolder {
+  font-size: 5.2vw !important;
+}
+  
 
 }
 
