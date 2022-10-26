@@ -265,7 +265,6 @@ label.radio input:checked+span{
 
 
 
-
 .card-2{
   margin-top: 40px !important;
 }
@@ -346,6 +345,9 @@ p{
 }
 .fw-bolder {
   font-size: 5.2vw !important;
+}
+.otp-field input {
+  margin : 3.75px;
 }
   
 

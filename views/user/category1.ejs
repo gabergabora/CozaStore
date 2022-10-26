@@ -3,21 +3,49 @@
 <%- include('../partials/user-navbar-loggedin.ejs') %> 
 
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <!-- <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <% if(cat[0].category==="Women") { %>
+                <%// if(cat[0].category==="Women") { %>
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Ladies Fashion Season</h1>
                     <p class="lead fw-normal text-white-50 mb-0">New Collections 2022</p>
                 </div>
-                <% } else if(cat[0].category==="Men") { %> 
+                <% //} else if(cat[0].category==="Men") { %> 
                     <div class="text-center text-white">
                         <h1 class="display-4 fw-bolder">Mens Fashion Season</h1>
                         <p class="lead fw-normal text-white-50 mb-0">New Collections 2022</p>
                     </div>
-                <% } %> 
+                <%// } %> 
             </div>
-        </header>
+        </header> -->
+
+        <% if(cat[0].category==="Women") { %>
+            <header class="mainBanner bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/blog-06.jpg'); background-size: cover"  ;>
+                <div class="container banner px-4 px-lg-5" >
+                    <div class="text-center text-white" style="text-align: center">
+                        <h1 class="display-4 fw-bolder" style="font-size: 5vw">WOMEN FASHION</h1>
+                        <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
+                    </div>
+                </div>
+            </header>
+            <% } else if(cat[0].category==="Men") { %> 
+                <header class="mainBanner bg-dark py-5" style="height: 37vw; margin: auto; background-image: url('../../images1/pexels-andrea-piacquadio-845434\ copy.jpg '); background-size: cover"  ;>
+                    <div class="container banner px-4 px-lg-5" >
+                        <div class="text-center text-white" style="text-align: center">
+                            <h1 class="display-4 fw-bolder" style="font-size: 5vw">MEN FASHION</h1>
+                            <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
+                        </div>
+                    </div>
+                </header>
+                <% } %> 
+
+
+        
+
+
+
+
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -84,8 +112,8 @@
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
 
 <%- include('../layout/footer.ejs') %>

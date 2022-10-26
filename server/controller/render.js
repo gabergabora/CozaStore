@@ -372,6 +372,8 @@ exports.userHome = (req, res) => {
                                     // }
                                     if(req.query.cat){
                                         res.redirect('/user_home')
+                                    }else if(req.query.productview){
+                                        res.redirect(`/product-view?id=${req.query.id}`)
                                     }
                                     else{
                                         res.redirect('/user_home')
@@ -408,6 +410,8 @@ exports.userHome = (req, res) => {
                                 .then(()=>{
                                     if(req.query.cat){
                                         res.redirect('/user_home')
+                                    }else if(req.query.productview){
+                                        res.redirect(`/product-view?id=${req.query.id}`)
                                     }else{
                                         res.redirect('/user_home')
                                     }
@@ -450,9 +454,11 @@ exports.userHome = (req, res) => {
                                 //     })
                                 res.redirect('/user_home')
                                       
+                                    }else if(req.query.productview){
+                                        res.redirect(`/product-view?id=${req.query.id}`)
                                     }else{
-                                res.redirect('/user_home')
-                            }
+                                        res.redirect('/user_home')
+                                    }
                             
                         }).catch((err)=>{
                             console.log(err);
