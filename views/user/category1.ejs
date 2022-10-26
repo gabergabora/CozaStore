@@ -41,7 +41,7 @@
                 <div class="container banner px-4 px-lg-5" >
                     <!-- /////text-dark : dark aakum and text-white : white aakum /////// -->
                     <div class="text-center text-dark" style="text-align: center; "> 
-                        <h1 class="display-4 fw-bolder" style="font-size: 5vw">WOMEN FASHION</h1>
+                        <h1 class="display-4 fw-bolder " style="font-size: 5vw;" >WOMEN FASHION</h1>
                         <h1 class=" mb-0" style="font-size: 2vw">New Collections 2022</h1>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             
                             <div class="text-secondary  position-absolute" id="pulse"
                                 style="top: 0.5rem; right: 0.5rem; cursor: pointer;">
-                                <form action="/user-home/addToWishlist?id=<%= cat[i]._id%>&catwish<%= i %>=<%= i %> " method="post">
+                                <form action="/user-home/addToWishlist?id=<%= cat[i]._id%>&catwish=true" method="post">
                                 <button type=submit style="background:none;border:none; margin-right:-9px; color:grey;"><i class="fa fa-heart fa-xl"></i></button>
                                 </form>
                                 </div>

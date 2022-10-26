@@ -341,6 +341,13 @@ exports.userHome = (req, res) => {
 
         let session = req.session
         let user = session.userId
+        // Product.findOne({_id : ObjectId(req.query.id)})
+        // .then(()=>{
+        //     Category.find()
+        //     .then(()=>{
+
+        //     })
+        // })
         Cart.findOne({owner : user})
         .then((result)=>{
             if(result){
@@ -1221,7 +1228,10 @@ exports.userHome = (req, res) => {
     exports.addToWishlist = (req,res) =>{
             let session = req.session
             let user = session.userId
-            Wishlist.findOne({owner : user})
+            Product.findOne({_id : ObjectId(req.query.id)})
+            .then((prod)=>{
+
+                Wishlist.findOne({owner : user})
             .then((result)=>{
                 // console.log(result)
                 if(result){
@@ -1251,28 +1261,28 @@ exports.userHome = (req, res) => {
                                         //     res.redirect(`/user-category?id=${req.query.id}`)
                                         // }
 
-                                        if(req.query.wishlist){
-                                            res.redirect('/user_home')
-                                        }
-                                        else{
-                                            res.redirect('/user_home')
-                                        }
+                                        // if(req.query.wishlist){
+                                        //     res.redirect('/user_home')
+                                        // }
+                                        // else{
+                                        //     res.redirect('/user_home')
+                                        // }
 
 
 
                                         // Category.find()
                                         // .then((cat)=>{
-                                        //     if(req.query.wishlist){
-                                        //         res.redirect('/user_home')
-                                        //     }
-                                        //     else
-                                        //      if(req.query.catwish1){
-                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
-                                        //     }else if(req.query.catwish2){
-                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
-                                        //     }else{
-                                        //         res.redirect('/user_home')
-                                        //     }
+                                            if(req.query.wishlist){
+                                                res.redirect('/user_home')
+                                            }
+                                            else
+                                             if(prod.category==="Men" && req.query.catwish){
+                                                res.redirect(`/user-category?id=${cat[0]._id}`)
+                                            }else if(prod.category==="Women" && req.query.catwish){
+                                                res.redirect(`/user-category?id=${cat[1]._id}`)
+                                            }else{
+                                                res.redirect('/user_home')
+                                            }
                                         // })
                                         
                                         
@@ -1280,22 +1290,22 @@ exports.userHome = (req, res) => {
                                         console.log(er)
                                     })
                                 }else{
-                                    res.redirect('/user_home')
+                                    // res.redirect('/user_home')
 
-                                    // Category.find()
-                                    // .then((cat)=>{
-                                    //     if(req.query.wishlist){
-                                    //         res.redirect('/user_home')
-                                    //     }
-                                    //     else 
-                                    //     if(req.query.catwish1){
-                                    //         res.redirect(`/user-category?id=${cat[0]._id}`)
-                                    //     }else if(req.query.catwish2){
-                                    //         res.redirect(`/user-category?id=${cat[1]._id}`)
-                                    //     }else{
-                                    //         res.redirect('/user_home')
-                                    //     }
-                                    // })
+                                    Category.find()
+                                    .then((cat)=>{
+                                        if(req.query.wishlist){
+                                            res.redirect('/user_home')
+                                        }
+                                        else
+                                         if(prod.category==="Men" && req.query.catwish){
+                                            res.redirect(`/user-category?id=${cat[0]._id}`)
+                                        }else if(prod.category==="Women" && req.query.catwish){
+                                            res.redirect(`/user-category?id=${cat[1]._id}`)
+                                        }else{
+                                            res.redirect('/user_home')
+                                        }
+                                    })
 
 
 
@@ -1318,22 +1328,22 @@ exports.userHome = (req, res) => {
                                     newWishlist.items.push(newWishItem)
                                     Wishlist.updateOne({owner : user},{$set:{items : newWishlist.items}})
                                     .then(()=>{
-                                        res.redirect('/user_home')
+                                        // res.redirect('/user_home')
 
-                                        // Category.find()
-                                        // .then((cat)=>{
-                                        //     if(req.query.wishlist){
-                                        //         res.redirect('/user_home')
-                                        //     }
-                                        //     else 
-                                        //     if(req.query.catwish1){
-                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
-                                        //     }else if(req.query.catwish2){
-                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
-                                        //     }else{
-                                        //         res.redirect('/user_home')
-                                        //     }
-                                        // })
+                                        Category.find()
+                                        .then((cat)=>{
+                                            if(req.query.wishlist){
+                                                res.redirect('/user_home')
+                                            }
+                                            else
+                                             if(prod.category==="Men" && req.query.catwish){
+                                                res.redirect(`/user-category?id=${cat[0]._id}`)
+                                            }else if(prod.category==="Women" && req.query.catwish){
+                                                res.redirect(`/user-category?id=${cat[1]._id}`)
+                                            }else{
+                                                res.redirect('/user_home')
+                                            }
+                                        })
 
 
                             }).catch((err)=>{
@@ -1364,24 +1374,22 @@ exports.userHome = (req, res) => {
                      wish.save()
                      .then(()=>{
 
-                        res.redirect('/user_home')
+                        // res.redirect('/user_home')
 
-                                        // Category.find()
-                                        // .then((cat)=>{
-                                        //     if(req.query.wishlist){
-                                        //         res.redirect('/user_home')
-                                        //     }
-                                        //     else
-                                        //      if(req.query.catwish1 && cat[0].category==="Men"){
-                                        //         res.redirect(`/user-category?id=${cat[0]._id}`)
-                                        //         console.log("men")
-                                        //     }else if(req.query.catwish2 && cat[1].category==="Women"){
-                                        //         res.redirect(`/user-category?id=${cat[1]._id}`)
-                                        //         console.log("women")
-                                        //     }else{
-                                        //         res.redirect('/user_home')
-                                        //     }
-                                        // })
+                                Category.find()
+                                .then((cat)=>{
+                                    if(req.query.wishlist){
+                                        res.redirect('/user_home')
+                                    }
+                                    else
+                                    if(prod.category==="Men" && req.query.catwish){
+                                        res.redirect(`/user-category?id=${cat[0]._id}`)
+                                    }else if(prod.category==="Women" && req.query.catwish){
+                                        res.redirect(`/user-category?id=${cat[1]._id}`)
+                                    }else{
+                                        res.redirect('/user_home')
+                                    }
+                                })
 
                          
                      }).catch((err)=>{
@@ -1400,7 +1408,8 @@ exports.userHome = (req, res) => {
                 //     console.log(cat1[0]);
                 // })
 
-            }  
+            })
+        }  
               
 exports.deleteFromWishlist = (req,res) =>{
        Wishlist.findOne({owner : req.session.userId})
