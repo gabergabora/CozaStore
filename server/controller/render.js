@@ -341,14 +341,11 @@ exports.userHome = (req, res) => {
 
         let session = req.session
         let user = session.userId
-        // Product.findOne({_id : ObjectId(req.query.id)})
-        // .then(()=>{
-        //     Category.find()
-        //     .then(()=>{
-
-        //     })
-        // })
-        Cart.findOne({owner : user})
+        Product.findOne({_id : ObjectId(req.query.id)})
+        .then((prod)=>{
+            Category.find()
+            .then((cat)=>{
+                Cart.findOne({owner : user})
         .then((result)=>{
             if(result){
                 Cart.findOne({owner : user,"items.itemId" : ObjectId(req.query.id) })
@@ -377,8 +374,10 @@ exports.userHome = (req, res) => {
                                     // }else if(req.query.men){
                                     //     res.redirect('/user-category?men=true')
                                     // }
-                                    if(req.query.cat){
-                                        res.redirect('/user_home')
+                                    if( prod.category==="Men" && req.query.cat){
+                                        res.redirect(`/user-category?id=${cat[0]._id}`)
+                                    }else if(prod.category==="Women" && req.query.cat){
+                                        res.redirect(`/user-category?id=${cat[1]._id}`)
                                     }else if(req.query.productview){
                                         res.redirect(`/product-view?id=${req.query.id}`)
                                     }
@@ -415,8 +414,10 @@ exports.userHome = (req, res) => {
                                     bill : newCart.bill
                                 })
                                 .then(()=>{
-                                    if(req.query.cat){
-                                        res.redirect('/user_home')
+                                    if( prod.category==="Men" && req.query.cat){
+                                        res.redirect(`/user-category?id=${cat[0]._id}`)
+                                    }else if(prod.category==="Women" && req.query.cat){
+                                        res.redirect(`/user-category?id=${cat[1]._id}`)
                                     }else if(req.query.productview){
                                         res.redirect(`/product-view?id=${req.query.id}`)
                                     }else{
@@ -451,17 +452,11 @@ exports.userHome = (req, res) => {
                         cart.bill = cart.items[0].quantity * cart.items[0].price
                         cart.save()
                         .then(()=>{
-                            if(req.query.cat){
-                                // Category.find()
-                                //     .then((category)=>{
-                                //         for(let i=0;i<category.length;i++){
-                                //             res.redirect('/user-category')
-                                //         }
-                                        
-                                //     })
-                                res.redirect('/user_home')
-                                      
-                                    }else if(req.query.productview){
+                            if( prod.category==="Men" && req.query.cat){
+                                res.redirect(`/user-category?id=${cat[0]._id}`)
+                            }else if(prod.category==="Women" && req.query.cat){
+                                res.redirect(`/user-category?id=${cat[1]._id}`)
+                            }else if(req.query.productview){
                                         res.redirect(`/product-view?id=${req.query.id}`)
                                     }else{
                                         res.redirect('/user_home')
@@ -478,6 +473,9 @@ exports.userHome = (req, res) => {
         }).catch((err)=>{
             console.log(err);
         })
+            })
+        })
+        
 
          
     }
