@@ -19,6 +19,24 @@ opacity:0.9;
   margin-top: 6px;
 }
 
+.navbar-toggler {
+  color: aliceblue;
+}
+/* #toggler {
+  color: aliceblue;
+} */
+.navbar {
+	 --bs-navbar-toggler-border-color: rgba(0, 0, 0, 400);
+   /* --bs-navbar-toggler-icon-bg : url("https://www.clipartmax.com/png/small/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png") !important; */
+
+}
+
+.navbar-toggler-icon {
+  /* --bs-navbar-toggler-icon-bg : url("https://www.clipartmax.com/png/small/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png") !important; */
+  background-image: var(--bs-navbar-toggler-icon-bg) !important;
+}
+
+
 /* .badge1{
 content:attr(value);
 font-size:12px;
@@ -55,8 +73,8 @@ opacity:0.9;
       <div class="logo-user" >
           <a class="navbar-brand text-white" href="/user_home" style="font-size: x-large;" >Coza Store</a>
       </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="navbarToggleExternalContent" >
+      <span class="navbar-toggler-icon bg-transparent text-white" id="toggler"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -127,6 +145,7 @@ opacity:0.9;
       
       
       <!-- Modal -->
+    
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
           <div class="modal-content">
@@ -144,3 +163,4 @@ opacity:0.9;
           </div>
           </div>
       </div>
+     
