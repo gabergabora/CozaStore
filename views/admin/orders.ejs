@@ -15,6 +15,7 @@
     <thead>
       <tr>
         <th scope="col">No</th>
+        <th scope="col">User Id</th>
         <th scope="col">Order Id</th>
         <th scope="col">Date</th>
         <th scope="col">Bill Amount</th>
@@ -30,7 +31,7 @@
       <tr>
         <th scope="row"><%= i+1  %> </th>
         
-  
+        <td><%= result[i].owner %> </td>
         <td><%= result[i]._id %> </td>
         <td><%= result[i].orderDate.toLocaleDateString() %></td>
         <td><%= result[i].bill %></td>
