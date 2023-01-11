@@ -1,5 +1,5 @@
 # CozaStore
-# Style 360 E commerce-Website
+# CozaStore E commerce-Website
 
 ## Table of contents
 
@@ -67,7 +67,7 @@ Deployed in AWS EC2 instance with Nginx reverse proxy
 
 ## Features
 
-The application displays different category of products such as footware,clothes and accessories.
+The application displays different category men and women clothes
 
 Users can do the following:
 
@@ -103,4 +103,4 @@ Admins can do the following:
 
 
 
- Copyright 2022 © [Aswanth Krishna](https://github.com/aswanthkris)
+ Copyright 2022 © [Mohammed Afzal](https://github.com/afzal123afzal)
