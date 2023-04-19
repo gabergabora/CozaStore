@@ -16,7 +16,7 @@ app.use(express.static('uploads'))
 app.use(express.urlencoded({extended:false}))
 app.use(sessions({
     secret: "verygoodpassword",
-    resave : false,
+    resave : false,.         
     saveUninitialized : true,
     cookie : {maxAge: 600000}
 }))
